@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package java_dbms;
+import java.sql.*;
 
 /**
  *
@@ -507,6 +508,22 @@ public class AppInterface extends javax.swing.JFrame {
      */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
+        
+        try{  
+            Class.forName("com.mysql.cj.jdbc.Driver");  
+            Connection con=DriverManager.getConnection(  
+            "jdbc:mysql://localhost:3306/temp","root","tanmai");  
+            //here sonoo is database name, root is username and password  
+            Statement stmt=con.createStatement();  
+//            ResultSet rs=stmt.executeQuery("insert emp values(5,'TanmaiK',25);");  
+             boolean rs=stmt.execute("insert emp values(21,'TanmaiK',25);");  
+//            while(rs.next())  
+//            System.out.println(rs.getInt(1));  
+            if(rs)
+                System.out.println(rs);
+            con.close();  
+            }catch(Exception e){ System.out.println(e);}  
+  
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
