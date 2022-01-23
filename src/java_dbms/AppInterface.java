@@ -400,6 +400,11 @@ public class AppInterface extends javax.swing.JFrame {
         place_order_button.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
         place_order_button.setForeground(new java.awt.Color(51, 51, 51));
         place_order_button.setText("PLACE ORDER");
+        place_order_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                place_order_buttonActionPerformed(evt);
+            }
+        });
 
         clear_all_button.setBackground(new java.awt.Color(255, 51, 51));
         clear_all_button.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
@@ -423,7 +428,7 @@ public class AppInterface extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(quantity, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(157, 157, 157)
-                        .addComponent(total, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(total, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(is_cheese_burst, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -502,37 +507,25 @@ public class AppInterface extends javax.swing.JFrame {
 
     private void size_smallActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_size_smallActionPerformed
         // TODO add your handling code here:
-        myPizza.crust=1;
-        size_med.setSelected(false);
-        size_large.setSelected(false);
-        size_xl.setSelected(false);
+        setPizzaCrust(1);
         updatePrice();
     }//GEN-LAST:event_size_smallActionPerformed
 
     private void size_medActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_size_medActionPerformed
         // TODO add your handling code here:
-        myPizza.crust=2;
-        size_small.setSelected(false);
-        size_large.setSelected(false);
-        size_xl.setSelected(false);
+        setPizzaCrust(2);
         updatePrice();
     }//GEN-LAST:event_size_medActionPerformed
 
     private void size_largeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_size_largeActionPerformed
         // TODO add your handling code here:
-        myPizza.crust=3;
-        size_med.setSelected(false);
-        size_small.setSelected(false);
-        size_xl.setSelected(false);
+        setPizzaCrust(3);
         updatePrice();
     }//GEN-LAST:event_size_largeActionPerformed
 
     private void size_xlActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_size_xlActionPerformed
         // TODO add your handling code here:
-        myPizza.crust=4;
-        size_med.setSelected(false);
-        size_large.setSelected(false);
-        size_small.setSelected(false);
+        setPizzaCrust(4);
         updatePrice();
     }//GEN-LAST:event_size_xlActionPerformed
 
@@ -599,27 +592,18 @@ public class AppInterface extends javax.swing.JFrame {
         updatePrice();
     }//GEN-LAST:event_quantityStateChanged
 
+    private void place_order_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_place_order_buttonActionPerformed
+        // TODO add your handling code here:
+        insertPizza();
+    }//GEN-LAST:event_place_order_buttonActionPerformed
+
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         
-        try{  
-            Class.forName("com.mysql.cj.jdbc.Driver");  
-            Connection con=DriverManager.getConnection(  
-            "jdbc:mysql://localhost:3306/temp","root","tanmai");  
-            //here sonoo is database name, root is username and password  
-            Statement stmt=con.createStatement();  
-//            ResultSet rs=stmt.executeQuery("insert emp values(5,'TanmaiK',25);");  
-             boolean rs=stmt.execute("insert into cake values(0,'corn3','mayo3','larger',0,400);");  
-//            while(rs.next())  
-//            System.out.println(rs.getInt(1));  
-            if(rs)
-                System.out.println(rs);
-            con.close();  
-            }catch(Exception e){ System.out.println(e);}  
-  
+       
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
@@ -684,6 +668,61 @@ public class AppInterface extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void updatePrice() {
-    total.setText("Total : Rs."+ myPizza.getPrice());
+        String s= myPizza.getPrice()+"";
+    total.setText("Total : Rs."+s);
     }
+       private void insertPizza(){
+    try{  
+            Class.forName("com.mysql.cj.jdbc.Driver");  
+            Connection con=DriverManager.getConnection(  
+            "jdbc:mysql://localhost:3306/temp","root","tanmai");  
+            //here sonoo is database name, root is username and password  
+            Statement stmt=con.createStatement();  
+//            ResultSet rs=stmt.executeQuery("insert emp values(5,'TanmaiK',25);");  
+             boolean rs=stmt.execute(String.format("insert into pizz values(0,'%s','%s',%d,%d,%d,%d);",
+                     myPizza.getIng(),myPizza.getSauce(),myPizza.crust,myPizza.isCheeseBurst?1:0,myPizza.quantity,myPizza.getPrice()));  
+//            while(rs.next())  
+//            System.out.println(rs.getInt(1));  
+           
+                System.out.println(rs);
+                myPizza=new Pizza();
+                updateWholeUI();
+            
+            con.close();  
+            }catch(Exception e){ System.out.println(e);}  
+  
+    }
+private void updateWholeUI(){
+top_corn.setSelected(myPizza.ingredients[0]==1);
+top_chicken.setSelected(myPizza.ingredients[1]==1);
+top_onion.setSelected(myPizza.ingredients[2]==1);
+top_black_olives.setSelected(myPizza.ingredients[3]==1);
+top_paneer.setSelected(myPizza.ingredients[4]==1);
+top_capsicum.setSelected(myPizza.ingredients[5]==1);
+
+sauce_bbq.setSelected(myPizza.sauce[0]==1);
+sauce_mayo.setSelected(myPizza.sauce[1]==1);
+sauce_alfredo.setSelected(myPizza.sauce[2]==1);
+sauce_red.setSelected(myPizza.sauce[3]==1);
+sauce_mint_mayo.setSelected(myPizza.sauce[4]==1);
+is_cheese_burst.setSelected(myPizza.isCheeseBurst);
+quantity.setValue(myPizza.quantity);
+    setPizzaCrust(myPizza.crust);
+    updatePrice();
 }
+private void setPizzaCrust(int i){
+myPizza.crust=i;
+javax.swing.JCheckBox[] myBox=new javax.swing.JCheckBox[]{size_small,size_med,size_large,size_xl};
+i--;
+for(int j=0;j<myBox.length;j++){
+if(j==i){
+myBox[j].setSelected(true);
+}else{
+myBox[j].setSelected(false);
+
+}
+}
+}
+}
+
+

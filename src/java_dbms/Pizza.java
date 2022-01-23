@@ -37,4 +37,10 @@ public class Pizza {
     return t;
     }
     
+    String getIng(){
+    return "";
+    }
+    String getSauce(){
+    return "";
+    }
 }
