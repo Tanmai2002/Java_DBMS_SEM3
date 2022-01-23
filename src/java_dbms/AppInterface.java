@@ -10,12 +10,15 @@ import java.sql.*;
  * @author crazi
  */
 public class AppInterface extends javax.swing.JFrame {
-
+    static Pizza myPizza;
     /**
      * Creates new form AppInterface
      */
     public AppInterface() {
         initComponents();
+        myPizza=new Pizza();
+        size_small.setSelected(true);
+                updatePrice();
     }
 
     /**
@@ -28,57 +31,62 @@ public class AppInterface extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        topping1 = new javax.swing.JCheckBox();
-        jCheckBox1 = new javax.swing.JCheckBox();
+        top_corn = new javax.swing.JCheckBox();
+        top_chicken = new javax.swing.JCheckBox();
         jLabel2 = new javax.swing.JLabel();
-        jCheckBox2 = new javax.swing.JCheckBox();
-        jCheckBox3 = new javax.swing.JCheckBox();
-        jCheckBox4 = new javax.swing.JCheckBox();
-        jCheckBox5 = new javax.swing.JCheckBox();
+        top_onion = new javax.swing.JCheckBox();
+        top_black_olives = new javax.swing.JCheckBox();
+        top_paneer = new javax.swing.JCheckBox();
+        top_capsicum = new javax.swing.JCheckBox();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
-        veg1 = new javax.swing.JCheckBox();
-        jCheckBox6 = new javax.swing.JCheckBox();
+        sauce_bbq = new javax.swing.JCheckBox();
+        sauce_mayo = new javax.swing.JCheckBox();
         jLabel3 = new javax.swing.JLabel();
-        jCheckBox7 = new javax.swing.JCheckBox();
-        jCheckBox8 = new javax.swing.JCheckBox();
-        jCheckBox9 = new javax.swing.JCheckBox();
+        sauce_alfredo = new javax.swing.JCheckBox();
+        sauce_red = new javax.swing.JCheckBox();
+        sauce_mint_mayo = new javax.swing.JCheckBox();
         jPanel4 = new javax.swing.JPanel();
-        veg2 = new javax.swing.JCheckBox();
-        jCheckBox11 = new javax.swing.JCheckBox();
+        size_small = new javax.swing.JCheckBox();
+        size_med = new javax.swing.JCheckBox();
         jLabel4 = new javax.swing.JLabel();
-        jCheckBox12 = new javax.swing.JCheckBox();
-        jCheckBox13 = new javax.swing.JCheckBox();
-        jCheckBox10 = new javax.swing.JCheckBox();
-        jSpinner1 = new javax.swing.JSpinner();
+        size_large = new javax.swing.JCheckBox();
+        size_xl = new javax.swing.JCheckBox();
+        is_cheese_burst = new javax.swing.JCheckBox();
+        quantity = new javax.swing.JSpinner();
         jLabel5 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jLabel6 = new javax.swing.JLabel();
+        place_order_button = new javax.swing.JButton();
+        clear_all_button = new javax.swing.JButton();
+        total = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(102, 102, 102));
 
         jPanel1.setBackground(new java.awt.Color(51, 51, 51));
 
-        topping1.setBackground(new java.awt.Color(51, 51, 51));
-        topping1.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
-        topping1.setForeground(new java.awt.Color(255, 255, 255));
-        topping1.setText("Corn");
-        topping1.addActionListener(new java.awt.event.ActionListener() {
+        top_corn.setBackground(new java.awt.Color(51, 51, 51));
+        top_corn.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
+        top_corn.setForeground(new java.awt.Color(255, 255, 255));
+        top_corn.setText("Corn");
+        top_corn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                topping1ActionPerformed(evt);
+                top_cornActionPerformed(evt);
+            }
+        });
+        top_corn.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                top_cornPropertyChange(evt);
             }
         });
 
-        jCheckBox1.setBackground(new java.awt.Color(51, 51, 51));
-        jCheckBox1.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
-        jCheckBox1.setForeground(new java.awt.Color(255, 255, 255));
-        jCheckBox1.setText("Chicken");
-        jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
+        top_chicken.setBackground(new java.awt.Color(51, 51, 51));
+        top_chicken.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
+        top_chicken.setForeground(new java.awt.Color(255, 255, 255));
+        top_chicken.setText("Chicken");
+        top_chicken.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox1ActionPerformed(evt);
+                top_chickenActionPerformed(evt);
             }
         });
 
@@ -87,43 +95,43 @@ public class AppInterface extends javax.swing.JFrame {
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("TOPPINGS");
 
-        jCheckBox2.setBackground(new java.awt.Color(51, 51, 51));
-        jCheckBox2.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
-        jCheckBox2.setForeground(new java.awt.Color(255, 255, 255));
-        jCheckBox2.setText("Onion");
-        jCheckBox2.addActionListener(new java.awt.event.ActionListener() {
+        top_onion.setBackground(new java.awt.Color(51, 51, 51));
+        top_onion.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
+        top_onion.setForeground(new java.awt.Color(255, 255, 255));
+        top_onion.setText("Onion");
+        top_onion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox2ActionPerformed(evt);
+                top_onionActionPerformed(evt);
             }
         });
 
-        jCheckBox3.setBackground(new java.awt.Color(51, 51, 51));
-        jCheckBox3.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
-        jCheckBox3.setForeground(new java.awt.Color(255, 255, 255));
-        jCheckBox3.setText("Black Olives");
-        jCheckBox3.addActionListener(new java.awt.event.ActionListener() {
+        top_black_olives.setBackground(new java.awt.Color(51, 51, 51));
+        top_black_olives.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
+        top_black_olives.setForeground(new java.awt.Color(255, 255, 255));
+        top_black_olives.setText("Black Olives");
+        top_black_olives.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox3ActionPerformed(evt);
+                top_black_olivesActionPerformed(evt);
             }
         });
 
-        jCheckBox4.setBackground(new java.awt.Color(51, 51, 51));
-        jCheckBox4.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
-        jCheckBox4.setForeground(new java.awt.Color(255, 255, 255));
-        jCheckBox4.setText("Paneer");
-        jCheckBox4.addActionListener(new java.awt.event.ActionListener() {
+        top_paneer.setBackground(new java.awt.Color(51, 51, 51));
+        top_paneer.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
+        top_paneer.setForeground(new java.awt.Color(255, 255, 255));
+        top_paneer.setText("Paneer");
+        top_paneer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox4ActionPerformed(evt);
+                top_paneerActionPerformed(evt);
             }
         });
 
-        jCheckBox5.setBackground(new java.awt.Color(51, 51, 51));
-        jCheckBox5.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
-        jCheckBox5.setForeground(new java.awt.Color(255, 255, 255));
-        jCheckBox5.setText("Capsicum");
-        jCheckBox5.addActionListener(new java.awt.event.ActionListener() {
+        top_capsicum.setBackground(new java.awt.Color(51, 51, 51));
+        top_capsicum.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
+        top_capsicum.setForeground(new java.awt.Color(255, 255, 255));
+        top_capsicum.setText("Capsicum");
+        top_capsicum.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox5ActionPerformed(evt);
+                top_capsicumActionPerformed(evt);
             }
         });
 
@@ -134,13 +142,13 @@ public class AppInterface extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(28, 28, 28)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(topping1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jCheckBox1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(top_corn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(top_chicken, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jCheckBox2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jCheckBox3, javax.swing.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE)
-                    .addComponent(jCheckBox4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jCheckBox5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(top_onion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(top_black_olives, javax.swing.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE)
+                    .addComponent(top_paneer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(top_capsicum, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(46, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -149,17 +157,17 @@ public class AppInterface extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(topping1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(top_corn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jCheckBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(top_chicken, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jCheckBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(top_onion, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jCheckBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(top_black_olives, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jCheckBox4, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(top_paneer, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jCheckBox5, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(top_capsicum, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(12, Short.MAX_VALUE))
         );
 
@@ -189,23 +197,23 @@ public class AppInterface extends javax.swing.JFrame {
 
         jPanel3.setBackground(new java.awt.Color(51, 51, 51));
 
-        veg1.setBackground(new java.awt.Color(51, 51, 51));
-        veg1.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
-        veg1.setForeground(new java.awt.Color(255, 255, 255));
-        veg1.setText("BBQ Sauce");
-        veg1.addActionListener(new java.awt.event.ActionListener() {
+        sauce_bbq.setBackground(new java.awt.Color(51, 51, 51));
+        sauce_bbq.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
+        sauce_bbq.setForeground(new java.awt.Color(255, 255, 255));
+        sauce_bbq.setText("BBQ Sauce");
+        sauce_bbq.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                veg1ActionPerformed(evt);
+                sauce_bbqActionPerformed(evt);
             }
         });
 
-        jCheckBox6.setBackground(new java.awt.Color(51, 51, 51));
-        jCheckBox6.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
-        jCheckBox6.setForeground(new java.awt.Color(255, 255, 255));
-        jCheckBox6.setText("Mayo");
-        jCheckBox6.addActionListener(new java.awt.event.ActionListener() {
+        sauce_mayo.setBackground(new java.awt.Color(51, 51, 51));
+        sauce_mayo.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
+        sauce_mayo.setForeground(new java.awt.Color(255, 255, 255));
+        sauce_mayo.setText("Mayo");
+        sauce_mayo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox6ActionPerformed(evt);
+                sauce_mayoActionPerformed(evt);
             }
         });
 
@@ -214,33 +222,33 @@ public class AppInterface extends javax.swing.JFrame {
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("PIZZA SAUCE");
 
-        jCheckBox7.setBackground(new java.awt.Color(51, 51, 51));
-        jCheckBox7.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
-        jCheckBox7.setForeground(new java.awt.Color(255, 255, 255));
-        jCheckBox7.setText("Alfredo");
-        jCheckBox7.addActionListener(new java.awt.event.ActionListener() {
+        sauce_alfredo.setBackground(new java.awt.Color(51, 51, 51));
+        sauce_alfredo.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
+        sauce_alfredo.setForeground(new java.awt.Color(255, 255, 255));
+        sauce_alfredo.setText("Alfredo");
+        sauce_alfredo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox7ActionPerformed(evt);
+                sauce_alfredoActionPerformed(evt);
             }
         });
 
-        jCheckBox8.setBackground(new java.awt.Color(51, 51, 51));
-        jCheckBox8.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
-        jCheckBox8.setForeground(new java.awt.Color(255, 255, 255));
-        jCheckBox8.setText("Peppery Red Sauce");
-        jCheckBox8.addActionListener(new java.awt.event.ActionListener() {
+        sauce_red.setBackground(new java.awt.Color(51, 51, 51));
+        sauce_red.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
+        sauce_red.setForeground(new java.awt.Color(255, 255, 255));
+        sauce_red.setText("Peppery Red Sauce");
+        sauce_red.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox8ActionPerformed(evt);
+                sauce_redActionPerformed(evt);
             }
         });
 
-        jCheckBox9.setBackground(new java.awt.Color(51, 51, 51));
-        jCheckBox9.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
-        jCheckBox9.setForeground(new java.awt.Color(255, 255, 255));
-        jCheckBox9.setText("Mint Mayo");
-        jCheckBox9.addActionListener(new java.awt.event.ActionListener() {
+        sauce_mint_mayo.setBackground(new java.awt.Color(51, 51, 51));
+        sauce_mint_mayo.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
+        sauce_mint_mayo.setForeground(new java.awt.Color(255, 255, 255));
+        sauce_mint_mayo.setText("Mint Mayo");
+        sauce_mint_mayo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox9ActionPerformed(evt);
+                sauce_mint_mayoActionPerformed(evt);
             }
         });
 
@@ -251,15 +259,15 @@ public class AppInterface extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(28, 28, 28)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jCheckBox8, javax.swing.GroupLayout.DEFAULT_SIZE, 186, Short.MAX_VALUE)
+                    .addComponent(sauce_red, javax.swing.GroupLayout.DEFAULT_SIZE, 186, Short.MAX_VALUE)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(veg1, javax.swing.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE)
-                                .addComponent(jCheckBox6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jCheckBox7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jCheckBox9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addComponent(sauce_bbq, javax.swing.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE)
+                                .addComponent(sauce_mayo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(sauce_alfredo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(sauce_mint_mayo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -269,37 +277,37 @@ public class AppInterface extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(veg1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(sauce_bbq, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jCheckBox6, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(sauce_mayo, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jCheckBox7, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(sauce_alfredo, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jCheckBox8, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(sauce_red, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jCheckBox9, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(sauce_mint_mayo, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(65, Short.MAX_VALUE))
         );
 
         jPanel4.setBackground(new java.awt.Color(51, 51, 51));
 
-        veg2.setBackground(new java.awt.Color(51, 51, 51));
-        veg2.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
-        veg2.setForeground(new java.awt.Color(255, 255, 255));
-        veg2.setText("Small");
-        veg2.addActionListener(new java.awt.event.ActionListener() {
+        size_small.setBackground(new java.awt.Color(51, 51, 51));
+        size_small.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
+        size_small.setForeground(new java.awt.Color(255, 255, 255));
+        size_small.setText("Small");
+        size_small.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                veg2ActionPerformed(evt);
+                size_smallActionPerformed(evt);
             }
         });
 
-        jCheckBox11.setBackground(new java.awt.Color(51, 51, 51));
-        jCheckBox11.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
-        jCheckBox11.setForeground(new java.awt.Color(255, 255, 255));
-        jCheckBox11.setText("Medium");
-        jCheckBox11.addActionListener(new java.awt.event.ActionListener() {
+        size_med.setBackground(new java.awt.Color(51, 51, 51));
+        size_med.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
+        size_med.setForeground(new java.awt.Color(255, 255, 255));
+        size_med.setText("Medium");
+        size_med.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox11ActionPerformed(evt);
+                size_medActionPerformed(evt);
             }
         });
 
@@ -308,23 +316,23 @@ public class AppInterface extends javax.swing.JFrame {
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("PIZZA CRUST");
 
-        jCheckBox12.setBackground(new java.awt.Color(51, 51, 51));
-        jCheckBox12.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
-        jCheckBox12.setForeground(new java.awt.Color(255, 255, 255));
-        jCheckBox12.setText("Large");
-        jCheckBox12.addActionListener(new java.awt.event.ActionListener() {
+        size_large.setBackground(new java.awt.Color(51, 51, 51));
+        size_large.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
+        size_large.setForeground(new java.awt.Color(255, 255, 255));
+        size_large.setText("Large");
+        size_large.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox12ActionPerformed(evt);
+                size_largeActionPerformed(evt);
             }
         });
 
-        jCheckBox13.setBackground(new java.awt.Color(51, 51, 51));
-        jCheckBox13.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
-        jCheckBox13.setForeground(new java.awt.Color(255, 255, 255));
-        jCheckBox13.setText("Extra Large");
-        jCheckBox13.addActionListener(new java.awt.event.ActionListener() {
+        size_xl.setBackground(new java.awt.Color(51, 51, 51));
+        size_xl.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
+        size_xl.setForeground(new java.awt.Color(255, 255, 255));
+        size_xl.setText("Extra Large");
+        size_xl.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox13ActionPerformed(evt);
+                size_xlActionPerformed(evt);
             }
         });
 
@@ -336,10 +344,10 @@ public class AppInterface extends javax.swing.JFrame {
                 .addGap(28, 28, 28)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(veg2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jCheckBox11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jCheckBox12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jCheckBox13, javax.swing.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE))
+                        .addComponent(size_small, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(size_med, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(size_large, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(size_xl, javax.swing.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE))
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(27, Short.MAX_VALUE))
         );
@@ -349,40 +357,59 @@ public class AppInterface extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(veg2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(size_small, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jCheckBox11, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(size_med, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jCheckBox12, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(size_large, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jCheckBox13, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(size_xl, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(118, Short.MAX_VALUE))
         );
 
-        jCheckBox10.setBackground(new java.awt.Color(204, 204, 204));
-        jCheckBox10.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
-        jCheckBox10.setForeground(new java.awt.Color(51, 51, 51));
-        jCheckBox10.setText(" Include Cheeseburst Crust ");
+        is_cheese_burst.setBackground(new java.awt.Color(204, 204, 204));
+        is_cheese_burst.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        is_cheese_burst.setForeground(new java.awt.Color(51, 51, 51));
+        is_cheese_burst.setText(" Include Cheeseburst Crust ");
+        is_cheese_burst.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                is_cheese_burstActionPerformed(evt);
+            }
+        });
+
+        quantity.setValue(1);
+        quantity.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                quantityStateChanged(evt);
+            }
+        });
+        quantity.addInputMethodListener(new java.awt.event.InputMethodListener() {
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
+            }
+            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
+                quantityInputMethodTextChanged(evt);
+            }
+        });
 
         jLabel5.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(51, 51, 51));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("QUANTITY:");
 
-        jButton1.setBackground(new java.awt.Color(0, 204, 51));
-        jButton1.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(51, 51, 51));
-        jButton1.setText("PLACE ORDER");
+        place_order_button.setBackground(new java.awt.Color(0, 204, 51));
+        place_order_button.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
+        place_order_button.setForeground(new java.awt.Color(51, 51, 51));
+        place_order_button.setText("PLACE ORDER");
 
-        jButton2.setBackground(new java.awt.Color(255, 51, 51));
-        jButton2.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("CLEAR ALL");
+        clear_all_button.setBackground(new java.awt.Color(255, 51, 51));
+        clear_all_button.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
+        clear_all_button.setForeground(new java.awt.Color(255, 255, 255));
+        clear_all_button.setText("CLEAR ALL");
 
-        jLabel6.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel6.setText("TOTAL:");
+        total.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        total.setForeground(new java.awt.Color(51, 51, 51));
+        total.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        total.setText("TOTAL:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -394,11 +421,11 @@ public class AppInterface extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(quantity, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(157, 157, 157)
-                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(total, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jCheckBox10, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(is_cheese_burst, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -411,9 +438,9 @@ public class AppInterface extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addComponent(place_order_button)
                 .addGap(18, 18, 18)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(clear_all_button, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(63, 63, 63))
         );
         layout.setVerticalGroup(
@@ -426,82 +453,151 @@ public class AppInterface extends javax.swing.JFrame {
                     .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jCheckBox10, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(is_cheese_burst, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(quantity, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(total, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(place_order_button, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(clear_all_button, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void veg1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_veg1ActionPerformed
+    private void sauce_bbqActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sauce_bbqActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_veg1ActionPerformed
+        myPizza.sauce[0]=((javax.swing.JCheckBox)evt.getSource()).isSelected()?1:0;
+        updatePrice();
+    }//GEN-LAST:event_sauce_bbqActionPerformed
 
-    private void jCheckBox6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox6ActionPerformed
+    private void sauce_mayoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sauce_mayoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox6ActionPerformed
+        myPizza.sauce[1]=((javax.swing.JCheckBox)evt.getSource()).isSelected()?1:0;
+        updatePrice();
+    }//GEN-LAST:event_sauce_mayoActionPerformed
 
-    private void jCheckBox7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox7ActionPerformed
+    private void sauce_alfredoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sauce_alfredoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox7ActionPerformed
+        myPizza.sauce[2]=((javax.swing.JCheckBox)evt.getSource()).isSelected()?1:0;
+        updatePrice();
+    }//GEN-LAST:event_sauce_alfredoActionPerformed
 
-    private void jCheckBox8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox8ActionPerformed
+    private void sauce_redActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sauce_redActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox8ActionPerformed
+        myPizza.sauce[3]=((javax.swing.JCheckBox)evt.getSource()).isSelected()?1:0;
+        updatePrice();
+    }//GEN-LAST:event_sauce_redActionPerformed
 
-    private void jCheckBox9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox9ActionPerformed
+    private void sauce_mint_mayoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sauce_mint_mayoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox9ActionPerformed
+        myPizza.sauce[4]=((javax.swing.JCheckBox)evt.getSource()).isSelected()?1:0;
+        updatePrice();
+    }//GEN-LAST:event_sauce_mint_mayoActionPerformed
 
-    private void veg2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_veg2ActionPerformed
+    private void size_smallActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_size_smallActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_veg2ActionPerformed
+        myPizza.crust=1;
+        size_med.setSelected(false);
+        size_large.setSelected(false);
+        size_xl.setSelected(false);
+        updatePrice();
+    }//GEN-LAST:event_size_smallActionPerformed
 
-    private void jCheckBox11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox11ActionPerformed
+    private void size_medActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_size_medActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox11ActionPerformed
+        myPizza.crust=2;
+        size_small.setSelected(false);
+        size_large.setSelected(false);
+        size_xl.setSelected(false);
+        updatePrice();
+    }//GEN-LAST:event_size_medActionPerformed
 
-    private void jCheckBox12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox12ActionPerformed
+    private void size_largeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_size_largeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox12ActionPerformed
+        myPizza.crust=3;
+        size_med.setSelected(false);
+        size_small.setSelected(false);
+        size_xl.setSelected(false);
+        updatePrice();
+    }//GEN-LAST:event_size_largeActionPerformed
 
-    private void jCheckBox13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox13ActionPerformed
+    private void size_xlActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_size_xlActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox13ActionPerformed
+        myPizza.crust=4;
+        size_med.setSelected(false);
+        size_large.setSelected(false);
+        size_small.setSelected(false);
+        updatePrice();
+    }//GEN-LAST:event_size_xlActionPerformed
 
-    private void jCheckBox5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox5ActionPerformed
+    private void top_capsicumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_top_capsicumActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox5ActionPerformed
+        myPizza.ingredients[5]=((javax.swing.JCheckBox)evt.getSource()).isSelected()?1:0;
+        updatePrice();
+    }//GEN-LAST:event_top_capsicumActionPerformed
 
-    private void jCheckBox4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox4ActionPerformed
+    private void top_paneerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_top_paneerActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox4ActionPerformed
+        myPizza.ingredients[4]=((javax.swing.JCheckBox)evt.getSource()).isSelected()?1:0;
+        updatePrice();
+    }//GEN-LAST:event_top_paneerActionPerformed
 
-    private void jCheckBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox3ActionPerformed
+    private void top_black_olivesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_top_black_olivesActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox3ActionPerformed
+        myPizza.ingredients[3]=((javax.swing.JCheckBox)evt.getSource()).isSelected()?1:0;
+        updatePrice();
+    }//GEN-LAST:event_top_black_olivesActionPerformed
 
-    private void jCheckBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox2ActionPerformed
+    private void top_onionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_top_onionActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox2ActionPerformed
+        myPizza.ingredients[2]=((javax.swing.JCheckBox)evt.getSource()).isSelected()?1:0;
+        updatePrice();
+    }//GEN-LAST:event_top_onionActionPerformed
 
-    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
+    private void top_chickenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_top_chickenActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox1ActionPerformed
+        myPizza.ingredients[1]=((javax.swing.JCheckBox)evt.getSource()).isSelected()?1:0;
+        updatePrice();
+    }//GEN-LAST:event_top_chickenActionPerformed
 
-    private void topping1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_topping1ActionPerformed
+    private void top_cornActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_top_cornActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_topping1ActionPerformed
+        myPizza.ingredients[0]=((javax.swing.JCheckBox)evt.getSource()).isSelected()?1:0;
+        updatePrice();
+    }//GEN-LAST:event_top_cornActionPerformed
+
+    private void top_cornPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_top_cornPropertyChange
+        // TODO add your handling code here:
+    }//GEN-LAST:event_top_cornPropertyChange
+
+    private void is_cheese_burstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_is_cheese_burstActionPerformed
+        // TODO add your handling code here:
+        myPizza.isCheeseBurst=((javax.swing.JCheckBox)evt.getSource()).isSelected();
+        updatePrice();
+    }//GEN-LAST:event_is_cheese_burstActionPerformed
+
+    private void quantityInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_quantityInputMethodTextChanged
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_quantityInputMethodTextChanged
+
+    private void quantityStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_quantityStateChanged
+        // TODO add your handling code here:
+        String val=((javax.swing.JSpinner)evt.getSource()).getValue().toString();
+        int q=Integer.parseInt(val);
+        if(q<=0){
+            quantity.setValue(1);
+            return;
+        }
+        myPizza.quantity=q;
+        updatePrice();
+    }//GEN-LAST:event_quantityStateChanged
 
     /**
      * @param args the command line arguments
@@ -516,7 +612,7 @@ public class AppInterface extends javax.swing.JFrame {
             //here sonoo is database name, root is username and password  
             Statement stmt=con.createStatement();  
 //            ResultSet rs=stmt.executeQuery("insert emp values(5,'TanmaiK',25);");  
-             boolean rs=stmt.execute("insert emp values(21,'TanmaiK',25);");  
+             boolean rs=stmt.execute("insert into cake values(0,'corn3','mayo3','larger',0,400);");  
 //            while(rs.next())  
 //            System.out.println(rs.getInt(1));  
             if(rs)
@@ -544,8 +640,9 @@ public class AppInterface extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(AppInterface.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        
         //</editor-fold>
-
+           
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -555,34 +652,38 @@ public class AppInterface extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JCheckBox jCheckBox1;
-    private javax.swing.JCheckBox jCheckBox10;
-    private javax.swing.JCheckBox jCheckBox11;
-    private javax.swing.JCheckBox jCheckBox12;
-    private javax.swing.JCheckBox jCheckBox13;
-    private javax.swing.JCheckBox jCheckBox2;
-    private javax.swing.JCheckBox jCheckBox3;
-    private javax.swing.JCheckBox jCheckBox4;
-    private javax.swing.JCheckBox jCheckBox5;
-    private javax.swing.JCheckBox jCheckBox6;
-    private javax.swing.JCheckBox jCheckBox7;
-    private javax.swing.JCheckBox jCheckBox8;
-    private javax.swing.JCheckBox jCheckBox9;
+    private javax.swing.JButton clear_all_button;
+    private javax.swing.JCheckBox is_cheese_burst;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JSpinner jSpinner1;
-    private javax.swing.JCheckBox topping1;
-    private javax.swing.JCheckBox veg1;
-    private javax.swing.JCheckBox veg2;
+    private javax.swing.JButton place_order_button;
+    private javax.swing.JSpinner quantity;
+    private javax.swing.JCheckBox sauce_alfredo;
+    private javax.swing.JCheckBox sauce_bbq;
+    private javax.swing.JCheckBox sauce_mayo;
+    private javax.swing.JCheckBox sauce_mint_mayo;
+    private javax.swing.JCheckBox sauce_red;
+    private javax.swing.JCheckBox size_large;
+    private javax.swing.JCheckBox size_med;
+    private javax.swing.JCheckBox size_small;
+    private javax.swing.JCheckBox size_xl;
+    private javax.swing.JCheckBox top_black_olives;
+    private javax.swing.JCheckBox top_capsicum;
+    private javax.swing.JCheckBox top_chicken;
+    private javax.swing.JCheckBox top_corn;
+    private javax.swing.JCheckBox top_onion;
+    private javax.swing.JCheckBox top_paneer;
+    private javax.swing.JLabel total;
     // End of variables declaration//GEN-END:variables
+
+    private void updatePrice() {
+    total.setText("Total : Rs."+ myPizza.getPrice());
+    }
 }

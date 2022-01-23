@@ -32,12 +32,12 @@
                   <Group type="102" attributes="0">
                       <Component id="jLabel5" min="-2" pref="122" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jSpinner1" min="-2" pref="171" max="-2" attributes="0"/>
+                      <Component id="quantity" min="-2" pref="171" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="157" max="-2" attributes="0"/>
-                      <Component id="jLabel6" min="-2" pref="108" max="-2" attributes="0"/>
+                      <Component id="total" min="-2" pref="108" max="-2" attributes="0"/>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
-                  <Component id="jCheckBox10" alignment="1" max="32767" attributes="0"/>
+                  <Component id="is_cheese_burst" alignment="1" max="32767" attributes="0"/>
                   <Group type="102" alignment="1" attributes="0">
                       <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
@@ -54,9 +54,9 @@
           </Group>
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="32767" attributes="0"/>
-              <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+              <Component id="place_order_button" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="jButton2" min="-2" pref="139" max="-2" attributes="0"/>
+              <Component id="clear_all_button" min="-2" pref="139" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -72,19 +72,19 @@
                   <Component id="jPanel4" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="jCheckBox10" min="-2" pref="46" max="-2" attributes="0"/>
+              <Component id="is_cheese_burst" min="-2" pref="46" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel5" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
-                      <Component id="jSpinner1" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
+                      <Component id="quantity" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="jLabel6" max="32767" attributes="0"/>
+                  <Component id="total" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jButton1" alignment="3" min="-2" pref="57" max="-2" attributes="0"/>
-                  <Component id="jButton2" alignment="3" min="-2" pref="57" max="-2" attributes="0"/>
+                  <Component id="place_order_button" alignment="3" min="-2" pref="57" max="-2" attributes="0"/>
+                  <Component id="clear_all_button" alignment="3" min="-2" pref="57" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -105,13 +105,13 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="topping1" max="32767" attributes="0"/>
-                      <Component id="jCheckBox1" max="32767" attributes="0"/>
+                      <Component id="top_corn" max="32767" attributes="0"/>
+                      <Component id="top_chicken" max="32767" attributes="0"/>
                       <Component id="jLabel2" max="32767" attributes="0"/>
-                      <Component id="jCheckBox2" max="32767" attributes="0"/>
-                      <Component id="jCheckBox3" pref="148" max="32767" attributes="0"/>
-                      <Component id="jCheckBox4" max="32767" attributes="0"/>
-                      <Component id="jCheckBox5" max="32767" attributes="0"/>
+                      <Component id="top_onion" max="32767" attributes="0"/>
+                      <Component id="top_black_olives" pref="148" max="32767" attributes="0"/>
+                      <Component id="top_paneer" max="32767" attributes="0"/>
+                      <Component id="top_capsicum" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace pref="46" max="32767" attributes="0"/>
               </Group>
@@ -123,24 +123,24 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="topping1" min="-2" pref="35" max="-2" attributes="0"/>
+                  <Component id="top_corn" min="-2" pref="35" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="jCheckBox1" min="-2" pref="35" max="-2" attributes="0"/>
+                  <Component id="top_chicken" min="-2" pref="35" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="jCheckBox2" min="-2" pref="35" max="-2" attributes="0"/>
+                  <Component id="top_onion" min="-2" pref="35" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="jCheckBox3" min="-2" pref="35" max="-2" attributes="0"/>
+                  <Component id="top_black_olives" min="-2" pref="35" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="jCheckBox4" min="-2" pref="35" max="-2" attributes="0"/>
+                  <Component id="top_paneer" min="-2" pref="35" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="jCheckBox5" min="-2" pref="35" max="-2" attributes="0"/>
+                  <Component id="top_capsicum" min="-2" pref="35" max="-2" attributes="0"/>
                   <EmptySpace pref="12" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JCheckBox" name="topping1">
+        <Component class="javax.swing.JCheckBox" name="top_corn">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="33" green="33" red="33" type="rgb"/>
@@ -154,10 +154,11 @@
             <Property name="text" type="java.lang.String" value="Corn"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="topping1ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="top_cornActionPerformed"/>
+            <EventHandler event="propertyChange" listener="java.beans.PropertyChangeListener" parameters="java.beans.PropertyChangeEvent" handler="top_cornPropertyChange"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JCheckBox" name="jCheckBox1">
+        <Component class="javax.swing.JCheckBox" name="top_chicken">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="33" green="33" red="33" type="rgb"/>
@@ -171,7 +172,7 @@
             <Property name="text" type="java.lang.String" value="Chicken"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBox1ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="top_chickenActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel2">
@@ -186,7 +187,7 @@
             <Property name="text" type="java.lang.String" value="TOPPINGS"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JCheckBox" name="jCheckBox2">
+        <Component class="javax.swing.JCheckBox" name="top_onion">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="33" green="33" red="33" type="rgb"/>
@@ -200,10 +201,10 @@
             <Property name="text" type="java.lang.String" value="Onion"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBox2ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="top_onionActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JCheckBox" name="jCheckBox3">
+        <Component class="javax.swing.JCheckBox" name="top_black_olives">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="33" green="33" red="33" type="rgb"/>
@@ -217,10 +218,10 @@
             <Property name="text" type="java.lang.String" value="Black Olives"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBox3ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="top_black_olivesActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JCheckBox" name="jCheckBox4">
+        <Component class="javax.swing.JCheckBox" name="top_paneer">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="33" green="33" red="33" type="rgb"/>
@@ -234,10 +235,10 @@
             <Property name="text" type="java.lang.String" value="Paneer"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBox4ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="top_paneerActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JCheckBox" name="jCheckBox5">
+        <Component class="javax.swing.JCheckBox" name="top_capsicum">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="33" green="33" red="33" type="rgb"/>
@@ -251,7 +252,7 @@
             <Property name="text" type="java.lang.String" value="Capsicum"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBox5ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="top_capsicumActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>
@@ -313,15 +314,15 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jCheckBox8" pref="186" max="32767" attributes="0"/>
+                      <Component id="sauce_red" pref="186" max="32767" attributes="0"/>
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="jLabel3" min="-2" pref="173" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="veg1" alignment="0" pref="148" max="32767" attributes="0"/>
-                                  <Component id="jCheckBox6" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="jCheckBox7" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="jCheckBox9" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="sauce_bbq" alignment="0" pref="148" max="32767" attributes="0"/>
+                                  <Component id="sauce_mayo" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="sauce_alfredo" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="sauce_mint_mayo" alignment="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -337,22 +338,22 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="veg1" min="-2" pref="35" max="-2" attributes="0"/>
+                  <Component id="sauce_bbq" min="-2" pref="35" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="jCheckBox6" min="-2" pref="35" max="-2" attributes="0"/>
+                  <Component id="sauce_mayo" min="-2" pref="35" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="jCheckBox7" min="-2" pref="35" max="-2" attributes="0"/>
+                  <Component id="sauce_alfredo" min="-2" pref="35" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="jCheckBox8" min="-2" pref="35" max="-2" attributes="0"/>
+                  <Component id="sauce_red" min="-2" pref="35" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="jCheckBox9" min="-2" pref="35" max="-2" attributes="0"/>
+                  <Component id="sauce_mint_mayo" min="-2" pref="35" max="-2" attributes="0"/>
                   <EmptySpace pref="65" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JCheckBox" name="veg1">
+        <Component class="javax.swing.JCheckBox" name="sauce_bbq">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="33" green="33" red="33" type="rgb"/>
@@ -366,10 +367,10 @@
             <Property name="text" type="java.lang.String" value="BBQ Sauce"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="veg1ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="sauce_bbqActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JCheckBox" name="jCheckBox6">
+        <Component class="javax.swing.JCheckBox" name="sauce_mayo">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="33" green="33" red="33" type="rgb"/>
@@ -383,7 +384,7 @@
             <Property name="text" type="java.lang.String" value="Mayo"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBox6ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="sauce_mayoActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel3">
@@ -398,7 +399,7 @@
             <Property name="text" type="java.lang.String" value="PIZZA SAUCE"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JCheckBox" name="jCheckBox7">
+        <Component class="javax.swing.JCheckBox" name="sauce_alfredo">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="33" green="33" red="33" type="rgb"/>
@@ -412,10 +413,10 @@
             <Property name="text" type="java.lang.String" value="Alfredo"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBox7ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="sauce_alfredoActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JCheckBox" name="jCheckBox8">
+        <Component class="javax.swing.JCheckBox" name="sauce_red">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="33" green="33" red="33" type="rgb"/>
@@ -429,10 +430,10 @@
             <Property name="text" type="java.lang.String" value="Peppery Red Sauce"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBox8ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="sauce_redActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JCheckBox" name="jCheckBox9">
+        <Component class="javax.swing.JCheckBox" name="sauce_mint_mayo">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="33" green="33" red="33" type="rgb"/>
@@ -446,7 +447,7 @@
             <Property name="text" type="java.lang.String" value="Mint Mayo"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBox9ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="sauce_mint_mayoActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>
@@ -465,10 +466,10 @@
                   <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="veg2" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jCheckBox11" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jCheckBox12" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jCheckBox13" alignment="0" pref="148" max="32767" attributes="0"/>
+                          <Component id="size_small" alignment="0" max="32767" attributes="0"/>
+                          <Component id="size_med" alignment="0" max="32767" attributes="0"/>
+                          <Component id="size_large" alignment="0" max="32767" attributes="0"/>
+                          <Component id="size_xl" alignment="0" pref="148" max="32767" attributes="0"/>
                       </Group>
                       <Component id="jLabel4" min="-2" pref="167" max="-2" attributes="0"/>
                   </Group>
@@ -482,20 +483,20 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="veg2" min="-2" pref="35" max="-2" attributes="0"/>
+                  <Component id="size_small" min="-2" pref="35" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="jCheckBox11" min="-2" pref="35" max="-2" attributes="0"/>
+                  <Component id="size_med" min="-2" pref="35" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="jCheckBox12" min="-2" pref="35" max="-2" attributes="0"/>
+                  <Component id="size_large" min="-2" pref="35" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="jCheckBox13" min="-2" pref="35" max="-2" attributes="0"/>
+                  <Component id="size_xl" min="-2" pref="35" max="-2" attributes="0"/>
                   <EmptySpace pref="118" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JCheckBox" name="veg2">
+        <Component class="javax.swing.JCheckBox" name="size_small">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="33" green="33" red="33" type="rgb"/>
@@ -509,10 +510,10 @@
             <Property name="text" type="java.lang.String" value="Small"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="veg2ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="size_smallActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JCheckBox" name="jCheckBox11">
+        <Component class="javax.swing.JCheckBox" name="size_med">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="33" green="33" red="33" type="rgb"/>
@@ -526,7 +527,7 @@
             <Property name="text" type="java.lang.String" value="Medium"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBox11ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="size_medActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel4">
@@ -541,7 +542,7 @@
             <Property name="text" type="java.lang.String" value="PIZZA CRUST"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JCheckBox" name="jCheckBox12">
+        <Component class="javax.swing.JCheckBox" name="size_large">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="33" green="33" red="33" type="rgb"/>
@@ -555,10 +556,10 @@
             <Property name="text" type="java.lang.String" value="Large"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBox12ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="size_largeActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JCheckBox" name="jCheckBox13">
+        <Component class="javax.swing.JCheckBox" name="size_xl">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="33" green="33" red="33" type="rgb"/>
@@ -572,12 +573,12 @@
             <Property name="text" type="java.lang.String" value="Extra Large"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBox13ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="size_xlActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JCheckBox" name="jCheckBox10">
+    <Component class="javax.swing.JCheckBox" name="is_cheese_burst">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="cc" green="cc" red="cc" type="rgb"/>
@@ -590,8 +591,20 @@
         </Property>
         <Property name="text" type="java.lang.String" value=" Include Cheeseburst Crust "/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="is_cheese_burstActionPerformed"/>
+      </Events>
     </Component>
-    <Component class="javax.swing.JSpinner" name="jSpinner1">
+    <Component class="javax.swing.JSpinner" name="quantity">
+      <Properties>
+        <Property name="value" type="java.lang.Object" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection code="1" type="code"/>
+        </Property>
+      </Properties>
+      <Events>
+        <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="quantityStateChanged"/>
+        <EventHandler event="inputMethodTextChanged" listener="java.awt.event.InputMethodListener" parameters="java.awt.event.InputMethodEvent" handler="quantityInputMethodTextChanged"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel5">
       <Properties>
@@ -605,7 +618,7 @@
         <Property name="text" type="java.lang.String" value="QUANTITY:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton1">
+    <Component class="javax.swing.JButton" name="place_order_button">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="33" green="cc" red="0" type="rgb"/>
@@ -619,7 +632,7 @@
         <Property name="text" type="java.lang.String" value="PLACE ORDER"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton2">
+    <Component class="javax.swing.JButton" name="clear_all_button">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="33" green="33" red="ff" type="rgb"/>
@@ -633,7 +646,7 @@
         <Property name="text" type="java.lang.String" value="CLEAR ALL"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel6">
+    <Component class="javax.swing.JLabel" name="total">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="SansSerif" size="18" style="1"/>
