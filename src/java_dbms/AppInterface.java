@@ -594,7 +594,7 @@ public class AppInterface extends javax.swing.JFrame {
 
     private void place_order_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_place_order_buttonActionPerformed
         // TODO add your handling code here:
-        insertPizza();
+        addOrder();
     }//GEN-LAST:event_place_order_buttonActionPerformed
 
     /**
@@ -723,6 +723,69 @@ myBox[j].setSelected(false);
 }
 }
 }
+
+
+
+
+
+public void addOrder()
+{
+		try {
+                     Class.forName("com.mysql.cj.jdbc.Driver");  
+            Connection con=DriverManager.getConnection(  
+            "jdbc:mysql://localhost:3306/javaschema2","root","tanmai");  
+            
+			PreparedStatement ps = con.prepareStatement("CALL fillOrders(? , ? , ?);");
+			ps.setString(1,Integer.toString(myPizza.isCheeseBurst? 1:0));
+			ps.setString(2,Integer.toString(myPizza.crust));
+			ps.setString(3,Integer.toString(myPizza.quantity));
+			ps.executeUpdate();
+			ps = con.prepareStatement("CALL getCurrentOrder();");
+			ResultSet rs = ps.executeQuery();
+			rs.next();
+			int id = Integer.parseInt(rs.getString("curr_order"));
+			int choice = 0;
+			for(int i = 0 ; i < 5 ; i++)
+			{	
+				choice = myPizza.sauce[i];
+				if( choice == 1)
+				{
+					ps = con.prepareStatement("CALL fillOrderSauce(? , ?);");
+					ps.setString(1,Integer.toString(id));
+					ps.setString(2,Integer.toString(i+1));
+					ps.executeUpdate();
+				}
+			}
+			
+			for(int i = 0 ; i < 6 ; i++)
+			{
+				choice = myPizza.ingredients[i];
+				if( choice == 1)
+				{
+					ps = con.prepareStatement("CALL fillOrdertoppings(? , ?);");
+					ps.setString(1,Integer.toString(id));
+					ps.setString(2,Integer.toString(i+1));
+					ps.executeUpdate();
+				}
+			}
+			ps = con.prepareStatement("CALL fillTotalPrice(?)");
+			ps.setString(1,Integer.toString(id));
+			ps.executeUpdate();
+                        myPizza=new Pizza();
+                        updateWholeUI();
+		} catch (SQLException e) {
+    		// TODO Auto-generated catch block
+			e.printStackTrace();
+		}catch (Exception e) {
+    		// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+}
+
+
+
+
+
 }
 
 
