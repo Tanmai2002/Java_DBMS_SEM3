@@ -38,9 +38,20 @@ public class Pizza {
     }
     
     String getIng(){
-    return "";
+        String s="";
+        String[] ingStrings=new String[]{"Corn","Chicken","Onion","Black Olives","Paneer","Capsicum"};
+        for(int i=0;i<ingredients.length;i++){
+            if(ingredients[i]==1)
+                s+=ingStrings[i]+", ";
+        }
+    return s;
     }
     String getSauce(){
-    return "";
-    }
+    String s="";
+        String[] sauceStrings=new String[]{"BBQ","Mayo","Alfredo","Red Peppery","Mint Mayo"};
+        for(int i=0;i<sauce.length;i++){
+            if(sauce[i]==1)
+                s+=sauceStrings[i]+", ";
+        }
+    return s;}
 }
