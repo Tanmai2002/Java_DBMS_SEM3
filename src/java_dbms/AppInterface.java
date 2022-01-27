@@ -3,7 +3,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package java_dbms;
+import java.awt.Component;
 import java.sql.*;
+import java.util.ArrayList;
+import javax.swing.DefaultListModel;
 
 /**
  *
@@ -11,13 +14,20 @@ import java.sql.*;
  */
 public class AppInterface extends javax.swing.JFrame {
     static Pizza myPizza;
+    ArrayList<Pizza> AllPizzas;
+    DefaultListModel<String> model;
     /**
      * Creates new form AppInterface
      */
     public AppInterface() {
         initComponents();
         myPizza=new Pizza();
+        AllPizzas=new ArrayList<Pizza>();
         size_small.setSelected(true);
+        model =new DefaultListModel<>();
+        listPizzas.setModel(model);
+    
+        
                 updatePrice();
     }
 
@@ -59,6 +69,12 @@ public class AppInterface extends javax.swing.JFrame {
         place_order_button = new javax.swing.JButton();
         clear_all_button = new javax.swing.JButton();
         total = new javax.swing.JLabel();
+        listPizzaContainer = new javax.swing.JScrollPane();
+        listPizzas = new javax.swing.JList<>();
+        add_pizza_button = new javax.swing.JButton();
+        total_of_AllPizza = new javax.swing.JLabel();
+        minus_button = new javax.swing.JButton();
+        plus_button = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(102, 102, 102));
@@ -416,6 +432,37 @@ public class AppInterface extends javax.swing.JFrame {
         total.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         total.setText("TOTAL:");
 
+        listPizzaContainer.setViewportView(listPizzas);
+
+        add_pizza_button.setBackground(new java.awt.Color(0, 204, 51));
+        add_pizza_button.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
+        add_pizza_button.setForeground(new java.awt.Color(51, 51, 51));
+        add_pizza_button.setText("ADD PIZZA");
+        add_pizza_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                add_pizza_buttonActionPerformed(evt);
+            }
+        });
+
+        total_of_AllPizza.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        total_of_AllPizza.setForeground(new java.awt.Color(51, 51, 51));
+        total_of_AllPizza.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        total_of_AllPizza.setText("TOTAL:");
+
+        minus_button.setText("-");
+        minus_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                minus_buttonActionPerformed(evt);
+            }
+        });
+
+        plus_button.setText("+");
+        plus_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                plus_buttonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -424,29 +471,40 @@ public class AppInterface extends javax.swing.JFrame {
                 .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(quantity, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(157, 157, 157)
-                        .addComponent(total, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(is_cheese_burst, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(quantity, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(91, 91, 91)
+                                .addComponent(add_pizza_button))
+                            .addComponent(is_cheese_burst, javax.swing.GroupLayout.PREFERRED_SIZE, 702, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(43, 43, 43)
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(38, 38, 38)
-                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(30, 30, 30))
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(29, 29, 29))))
+            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(place_order_button)
-                .addGap(18, 18, 18)
-                .addComponent(clear_all_button, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(63, 63, 63))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(place_order_button)
+                    .addComponent(total_of_AllPizza, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(28, 28, 28)
+                        .addComponent(clear_all_button, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(188, 188, 188)
+                        .addComponent(minus_button)))
+                .addGap(62, 62, 62))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addComponent(plus_button)
+                .addComponent(total, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(listPizzaContainer, javax.swing.GroupLayout.PREFERRED_SIZE, 748, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -459,16 +517,29 @@ public class AppInterface extends javax.swing.JFrame {
                     .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(is_cheese_burst, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(quantity, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(total, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(add_pizza_button, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(total, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(plus_button)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(quantity, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(39, 39, 39)))
+                .addComponent(listPizzaContainer, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(total_of_AllPizza, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(minus_button))
+                .addGap(23, 23, 23)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(place_order_button, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(clear_all_button, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(clear_all_button, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(place_order_button, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -594,8 +665,76 @@ public class AppInterface extends javax.swing.JFrame {
 
     private void place_order_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_place_order_buttonActionPerformed
         // TODO add your handling code here:
-        addOrder();
+        addOrder("9370982912");
     }//GEN-LAST:event_place_order_buttonActionPerformed
+
+    private void add_pizza_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_add_pizza_buttonActionPerformed
+        // TODO add your handling code here:
+        String s;
+        
+        for(int i=0;i<model.getSize();i++){
+        if(myPizza.equalsPizza(AllPizzas.get(i))){
+            
+            AllPizzas.get(i).quantity+=(add_pizza_button.getText().equals("UPDATE PIZZA"))?0:myPizza.quantity;
+            myPizza=AllPizzas.get(i);
+            if(add_pizza_button.getText().equals("UPDATE PIZZA")){
+            for(int j=i+1;j<model.getSize();j++){
+            if(myPizza.equalsPizza(AllPizzas.get(j))){
+                myPizza.quantity+=AllPizzas.get(j).quantity;
+                model.remove(j);
+                AllPizzas.remove(j);
+            }
+            }
+            }
+            s=String.format("%d %s Pizzas with delicious Toppings of cheese,%s and yummy %s sauces %s(Rs.%d)", 
+                myPizza.quantity,
+                myPizza.getCrustSize(),
+                myPizza.getIng(),
+                myPizza.getSauce(),
+                (myPizza.isCheeseBurst?"loaded with extra cheesy Cheese Busrt!!":""),
+                myPizza.getPrice());
+            model.set(i, s);
+            myPizza=new Pizza();
+        updateWholeUI();
+            return;
+        }
+        }
+         s=String.format("%d %s Pizzas with delicious Toppings of cheese,%s and yummy %s sauces %s(Rs.%d)", 
+                myPizza.quantity,
+                myPizza.getCrustSize(),
+                myPizza.getIng(),
+                myPizza.getSauce(),
+                (myPizza.isCheeseBurst?"loaded with extra cheesy Cheese Busrt!!":""),
+                myPizza.getPrice());
+        
+        model.addElement(s);
+        AllPizzas.add(myPizza);
+        myPizza=new Pizza();
+        
+        updateWholeUI();
+        
+    }//GEN-LAST:event_add_pizza_buttonActionPerformed
+
+    private void minus_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_minus_buttonActionPerformed
+        // TODO add your handling code here:
+        int i=listPizzas.getSelectedIndex();
+        if(i!=-1){
+            model.remove(i);
+            AllPizzas.remove(i);
+            listPizzas.clearSelection();
+            updatePrice();
+        }
+    }//GEN-LAST:event_minus_buttonActionPerformed
+
+    private void plus_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_plus_buttonActionPerformed
+        // TODO add your handling code here:
+        if(listPizzas.getSelectedIndex()!=-1){
+            myPizza=AllPizzas.get(listPizzas.getSelectedIndex());
+            updateWholeUI();
+            add_pizza_button.setText("UPDATE PIZZA");
+            listPizzas.clearSelection();
+        }
+    }//GEN-LAST:event_plus_buttonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -636,6 +775,7 @@ public class AppInterface extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton add_pizza_button;
     private javax.swing.JButton clear_all_button;
     private javax.swing.JCheckBox is_cheese_burst;
     private javax.swing.JLabel jLabel1;
@@ -647,7 +787,11 @@ public class AppInterface extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JScrollPane listPizzaContainer;
+    private javax.swing.JList<String> listPizzas;
+    private javax.swing.JButton minus_button;
     private javax.swing.JButton place_order_button;
+    private javax.swing.JButton plus_button;
     private javax.swing.JSpinner quantity;
     private javax.swing.JCheckBox sauce_alfredo;
     private javax.swing.JCheckBox sauce_bbq;
@@ -665,11 +809,17 @@ public class AppInterface extends javax.swing.JFrame {
     private javax.swing.JCheckBox top_onion;
     private javax.swing.JCheckBox top_paneer;
     private javax.swing.JLabel total;
+    private javax.swing.JLabel total_of_AllPizza;
     // End of variables declaration//GEN-END:variables
 
     private void updatePrice() {
         String s= myPizza.getPrice()+"";
     total.setText("Total : Rs."+s);
+    int price=0;
+    for(Pizza p: AllPizzas){
+    price+=p.getPrice();
+    }
+    total_of_AllPizza.setText("Total : Rs."+price+"");
     }
        private void insertPizza(){
     try{  
@@ -707,6 +857,7 @@ sauce_red.setSelected(myPizza.sauce[3]==1);
 sauce_mint_mayo.setSelected(myPizza.sauce[4]==1);
 is_cheese_burst.setSelected(myPizza.isCheeseBurst);
 quantity.setValue(myPizza.quantity);
+add_pizza_button.setText("ADD PIZZA");
     setPizzaCrust(myPizza.crust);
     updatePrice();
 }
@@ -727,31 +878,122 @@ myBox[j].setSelected(false);
 
 
 
+//
+//public void addOrder()
+//{
+//		try {
+//                     Class.forName("com.mysql.cj.jdbc.Driver");  
+//            Connection con=DriverManager.getConnection(  
+//            "jdbc:mysql://localhost:3306/javaschema2","root","tanmai");  
+//            
+//			PreparedStatement ps = con.prepareStatement("CALL fillOrders(? , ? , ?);");
+//			ps.setString(1,Integer.toString(myPizza.isCheeseBurst? 1:0));
+//			ps.setString(2,Integer.toString(myPizza.crust));
+//			ps.setString(3,Integer.toString(myPizza.quantity));
+//			ps.executeUpdate();
+//			ps = con.prepareStatement("CALL getCurrentOrder();");
+//			ResultSet rs = ps.executeQuery();
+//			rs.next();
+//			int id = Integer.parseInt(rs.getString("curr_order"));
+//			int choice = 0;
+//			for(int i = 0 ; i < 5 ; i++)
+//			{	
+//				choice = myPizza.sauce[i];
+//				if( choice == 1)
+//				{
+//					ps = con.prepareStatement("CALL fillOrderSauce(? , ?);");
+//					ps.setString(1,Integer.toString(id));
+//					ps.setString(2,Integer.toString(i+1));
+//					ps.executeUpdate();
+//				}
+//			}
+//			
+//			for(int i = 0 ; i < 6 ; i++)
+//			{
+//				choice = myPizza.ingredients[i];
+//				if( choice == 1)
+//				{
+//					ps = con.prepareStatement("CALL fillOrdertoppings(? , ?);");
+//					ps.setString(1,Integer.toString(id));
+//					ps.setString(2,Integer.toString(i+1));
+//					ps.executeUpdate();
+//				}
+//			}
+//			ps = con.prepareStatement("CALL fillTotalPrice(?)");
+//			ps.setString(1,Integer.toString(id));
+//			ps.executeUpdate();
+//                        myPizza=new Pizza();
+//                        updateWholeUI();
+//		} catch (SQLException e) {
+//    		// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}catch (Exception e) {
+//    		// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//}
 
-public void addOrder()
-{
+
+public  void addOrder(String number)
+	{
 		try {
-                     Class.forName("com.mysql.cj.jdbc.Driver");  
+		 Class.forName("com.mysql.cj.jdbc.Driver");  
             Connection con=DriverManager.getConnection(  
-            "jdbc:mysql://localhost:3306/javaschema2","root","tanmai");  
-            
-			PreparedStatement ps = con.prepareStatement("CALL fillOrders(? , ? , ?);");
-			ps.setString(1,Integer.toString(myPizza.isCheeseBurst? 1:0));
-			ps.setString(2,Integer.toString(myPizza.crust));
-			ps.setString(3,Integer.toString(myPizza.quantity));
-			ps.executeUpdate();
-			ps = con.prepareStatement("CALL getCurrentOrder();");
+            "jdbc:mysql://localhost:3306/joeys_pizza","root","tanmai");  
+		PreparedStatement ps = con.prepareStatement("INSERT INTO orders (cust_number,order_total_price) VALUES (?,0)");
+		ps.setString(1,number);
+		ps.executeUpdate();
+		Pizza choice;
+		
+		for(int i=0;i<AllPizzas.size();i++)
+		{
+			choice =AllPizzas.get(i);
+				
+				addPizza(choice);
+			
+		}
+		model.clear();
+                AllPizzas.clear();
+                myPizza=new Pizza();
+                updateWholeUI();
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+	
+	public  void addPizza(Pizza pizz)
+	{
+		try {
+			 Class.forName("com.mysql.cj.jdbc.Driver");  
+            Connection con=DriverManager.getConnection(  
+            "jdbc:mysql://localhost:3306/joeys_pizza","root","tanmai");  
+			PreparedStatement ps = con.prepareStatement("CALL getCurrentOrder()");
 			ResultSet rs = ps.executeQuery();
 			rs.next();
-			int id = Integer.parseInt(rs.getString("curr_order"));
-			int choice = 0;
+			int order_id = Integer.parseInt(rs.getString("curr_order"));
+			
+			ps = con.prepareStatement("INSERT INTO pizzas (order_id,cheeseburst,crust_id,quantity) VALUES (?,?,?,?)");
+			ps.setString(1,Integer.toString(order_id));
+			ps.setString(2,Integer.toString(pizz.isCheeseBurst?1:0));
+			ps.setString(3,Integer.toString(pizz.crust));
+			ps.setString(4,Integer.toString(pizz.quantity));
+			ps.executeUpdate();
+			
+			ps = con.prepareStatement("CALL getCurrentPizza()");
+			rs = ps.executeQuery();
+			rs.next();
+			int pizza_id = Integer.parseInt(rs.getString("curr_pizza"));
+
+			int c;
+			
 			for(int i = 0 ; i < 5 ; i++)
 			{	
-				choice = myPizza.sauce[i];
-				if( choice == 1)
+				c = pizz.sauce[i];
+				if( c == 1)
 				{
-					ps = con.prepareStatement("CALL fillOrderSauce(? , ?);");
-					ps.setString(1,Integer.toString(id));
+					ps = con.prepareStatement("CALL fillPizzaSauces(? , ?);");
+					ps.setString(1,Integer.toString(pizza_id));
 					ps.setString(2,Integer.toString(i+1));
 					ps.executeUpdate();
 				}
@@ -759,31 +1001,30 @@ public void addOrder()
 			
 			for(int i = 0 ; i < 6 ; i++)
 			{
-				choice = myPizza.ingredients[i];
-				if( choice == 1)
+				c = pizz.ingredients[i];
+				if( c == 1)
 				{
-					ps = con.prepareStatement("CALL fillOrdertoppings(? , ?);");
-					ps.setString(1,Integer.toString(id));
+					ps = con.prepareStatement("CALL fillPizzaToppings(? , ?);");
+					ps.setString(1,Integer.toString(pizza_id));
 					ps.setString(2,Integer.toString(i+1));
 					ps.executeUpdate();
 				}
 			}
-			ps = con.prepareStatement("CALL fillTotalPrice(?)");
-			ps.setString(1,Integer.toString(id));
+			
+			ps = con.prepareStatement("CALL fillPizzaPrice(?)");
+			ps.setString(1,Integer.toString(pizza_id));
 			ps.executeUpdate();
-                        myPizza=new Pizza();
-                        updateWholeUI();
-		} catch (SQLException e) {
-    		// TODO Auto-generated catch block
-			e.printStackTrace();
-		}catch (Exception e) {
-    		// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-}
-
-
-
+			
+			ps = con.prepareStatement("CALL fillTotalPrice(?,?)");
+			ps.setString(1,Integer.toString(order_id));
+			ps.setString(2,Integer.toString(pizza_id));
+			ps.executeUpdate();
+			
+			}
+			catch(Exception e){
+				e.printStackTrace();
+			}
+	}
 
 
 }

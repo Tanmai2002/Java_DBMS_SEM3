@@ -4,6 +4,8 @@
  */
 package java_dbms;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author crazi
@@ -38,20 +40,30 @@ public class Pizza {
     }
     
     String getIng(){
-        String s="";
         String[] ingStrings=new String[]{"Corn","Chicken","Onion","Black Olives","Paneer","Capsicum"};
+        ArrayList<String> tStrings=new ArrayList();
         for(int i=0;i<ingredients.length;i++){
             if(ingredients[i]==1)
-                s+=ingStrings[i]+", ";
+                tStrings.add(ingStrings[i]);
         }
-    return s;
+    return String.join(", ", tStrings);
     }
     String getSauce(){
-    String s="";
         String[] sauceStrings=new String[]{"BBQ","Mayo","Alfredo","Red Peppery","Mint Mayo"};
+        ArrayList<String> tStrings=new ArrayList();
         for(int i=0;i<sauce.length;i++){
             if(sauce[i]==1)
-                s+=sauceStrings[i]+", ";
+                tStrings.add(sauceStrings[i]);
         }
-    return s;}
+        
+    return String.join(", ", tStrings);}
+    String getCrustSize(){
+    return crust==1?"Small":crust==2?"Medium":crust==3?"Large":"Extra Large"; 
+    } 
+
+    public boolean equalsPizza(Pizza obj) {
+      return obj.crust==crust && obj.isCheeseBurst==isCheeseBurst && 
+              obj.getIng().equals(getIng()) && obj.getSauce().equals(getSauce());
+    }
+    
 }
