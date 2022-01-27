@@ -821,27 +821,27 @@ public class AppInterface extends javax.swing.JFrame {
     }
     total_of_AllPizza.setText("Total : Rs."+price+"");
     }
-       private void insertPizza(){
-    try{  
-            Class.forName("com.mysql.cj.jdbc.Driver");  
-            Connection con=DriverManager.getConnection(  
-            "jdbc:mysql://localhost:3306/temp","root","tanmai");  
-            //here sonoo is database name, root is username and password  
-            Statement stmt=con.createStatement();  
-//            ResultSet rs=stmt.executeQuery("insert emp values(5,'TanmaiK',25);");  
-             boolean rs=stmt.execute(String.format("insert into pizz values(0,'%s','%s',%d,%d,%d,%d);",
-                     myPizza.getIng(),myPizza.getSauce(),myPizza.crust,myPizza.isCheeseBurst?1:0,myPizza.quantity,myPizza.getPrice()));  
-//            while(rs.next())  
-//            System.out.println(rs.getInt(1));  
-           
-                System.out.println(rs);
-                myPizza=new Pizza();
-                updateWholeUI();
-            
-            con.close();  
-            }catch(Exception e){ System.out.println(e);}  
-  
-    }
+//       private void insertPizza(){
+//    try{  
+//            Class.forName("com.mysql.cj.jdbc.Driver");  
+//            Connection con=DriverManager.getConnection(  
+//            "jdbc:mysql://localhost:3306/temp","root","tanmai");  
+//            //here sonoo is database name, root is username and password  
+//            Statement stmt=con.createStatement();  
+////            ResultSet rs=stmt.executeQuery("insert emp values(5,'TanmaiK',25);");  
+//             boolean rs=stmt.execute(String.format("insert into pizz values(0,'%s','%s',%d,%d,%d,%d);",
+//                     myPizza.getIng(),myPizza.getSauce(),myPizza.crust,myPizza.isCheeseBurst?1:0,myPizza.quantity,myPizza.getPrice()));  
+////            while(rs.next())  
+////            System.out.println(rs.getInt(1));  
+//           
+//                System.out.println(rs);
+//                myPizza=new Pizza();
+//                updateWholeUI();
+//            
+//            con.close();  
+//            }catch(Exception e){ System.out.println(e);}  
+//  
+//    }
 private void updateWholeUI(){
 top_corn.setSelected(myPizza.ingredients[0]==1);
 top_chicken.setSelected(myPizza.ingredients[1]==1);
