@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package java_dbms;
+import com.mysql.cj.util.StringUtils;
 import java.awt.Component;
 import java.sql.*;
 import java.util.ArrayList;
@@ -19,14 +20,17 @@ public class AppInterface extends javax.swing.JFrame {
     /**
      * Creates new form AppInterface
      */
+    
     public AppInterface() {
         initComponents();
+        this.setResizable(false);
+        this.setMaximumSize(this.getMinimumSize());
         myPizza=new Pizza();
         AllPizzas=new ArrayList<Pizza>();
         size_small.setSelected(true);
         model =new DefaultListModel<>();
         listPizzas.setModel(model);
-    
+        Error_text.setVisible(false);
         
                 updatePrice();
     }
@@ -75,6 +79,9 @@ public class AppInterface extends javax.swing.JFrame {
         total_of_AllPizza = new javax.swing.JLabel();
         minus_button = new javax.swing.JButton();
         plus_button = new javax.swing.JButton();
+        mob_no = new javax.swing.JTextField();
+        mob_no_text = new javax.swing.JLabel();
+        Error_text = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(102, 102, 102));
@@ -426,6 +433,11 @@ public class AppInterface extends javax.swing.JFrame {
         clear_all_button.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
         clear_all_button.setForeground(new java.awt.Color(255, 255, 255));
         clear_all_button.setText("CLEAR ALL");
+        clear_all_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                clear_all_buttonActionPerformed(evt);
+            }
+        });
 
         total.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         total.setForeground(new java.awt.Color(51, 51, 51));
@@ -456,55 +468,80 @@ public class AppInterface extends javax.swing.JFrame {
             }
         });
 
-        plus_button.setText("+");
+        plus_button.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        plus_button.setText("*");
         plus_button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 plus_buttonActionPerformed(evt);
             }
         });
 
+        mob_no.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mob_noActionPerformed(evt);
+            }
+        });
+
+        mob_no_text.setText("Mobile Number*");
+
+        Error_text.setText("ERROR");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(30, 30, 30)
+                .addGap(19, 19, 19)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(43, 43, 43)
+                                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(listPizzaContainer, javax.swing.GroupLayout.PREFERRED_SIZE, 703, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(plus_button)
+                                    .addComponent(minus_button))))
+                        .addGap(35, 35, 35))
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(11, 11, 11)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
+                                .addGap(9, 9, 9)
                                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(quantity, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(91, 91, 91)
-                                .addComponent(add_pizza_button))
+                                .addComponent(quantity, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(is_cheese_burst, javax.swing.GroupLayout.PREFERRED_SIZE, 702, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(43, 43, 43)
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(mob_no, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(mob_no_text)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(29, 29, 29))))
-            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(place_order_button)
-                    .addComponent(total_of_AllPizza, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(total_of_AllPizza, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(113, 113, 113))))
+            .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(28, 28, 28)
-                        .addComponent(clear_all_button, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(188, 188, 188)
-                        .addComponent(minus_button)))
-                .addGap(62, 62, 62))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                .addComponent(plus_button)
-                .addComponent(total, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(listPizzaContainer, javax.swing.GroupLayout.PREFERRED_SIZE, 748, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(434, 434, 434)
+                        .addComponent(add_pizza_button)
+                        .addGap(18, 18, 18)
+                        .addComponent(total, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(Error_text, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(place_order_button)
+                .addGap(18, 18, 18)
+                .addComponent(clear_all_button, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(67, 67, 67))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -517,29 +554,29 @@ public class AppInterface extends javax.swing.JFrame {
                     .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(is_cheese_burst, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(add_pizza_button, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(total, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(plus_button)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(quantity, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(39, 39, 39)))
-                .addComponent(listPizzaContainer, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(total_of_AllPizza, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(minus_button))
-                .addGap(23, 23, 23)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(add_pizza_button, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(total, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(quantity, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(plus_button, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(minus_button))
+                    .addComponent(listPizzaContainer, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(total_of_AllPizza, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(mob_no_text, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(mob_no, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(place_order_button, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(clear_all_button, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(place_order_button, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Error_text))
                 .addContainerGap())
         );
 
@@ -665,7 +702,18 @@ public class AppInterface extends javax.swing.JFrame {
 
     private void place_order_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_place_order_buttonActionPerformed
         // TODO add your handling code here:
-        addOrder("9370982912");
+        if(mob_no.getText().length()!=10 || !StringUtils.isStrictlyNumeric(mob_no.getText())){
+            Error_text.setVisible(true);
+            Error_text.setText("ERROR: Please Enter A VALID Mobile Number");
+        return;
+        }
+        if(AllPizzas.isEmpty()){
+        Error_text.setVisible(true);
+            Error_text.setText("ERROR: Please Enter Atleast 1 Pizza");
+        return;
+        }
+        addOrder(mob_no.getText());
+        mob_no.setText("");
     }//GEN-LAST:event_place_order_buttonActionPerformed
 
     private void add_pizza_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_add_pizza_buttonActionPerformed
@@ -686,10 +734,10 @@ public class AppInterface extends javax.swing.JFrame {
             }
             }
             }
-            s=String.format("%d %s Pizzas with delicious Toppings of cheese,%s and yummy %s sauces %s(Rs.%d)", 
+            s=String.format("%d %s Pizzas with delicious Toppings of %s and yummy %s sauces %s(Rs.%d)", 
                 myPizza.quantity,
                 myPizza.getCrustSize(),
-                myPizza.getIng(),
+                myPizza.getIng().equals("")?"Cheese":"Cheese, "+myPizza.getIng(),
                 myPizza.getSauce(),
                 (myPizza.isCheeseBurst?"loaded with extra cheesy Cheese Busrt!!":""),
                 myPizza.getPrice());
@@ -699,10 +747,10 @@ public class AppInterface extends javax.swing.JFrame {
             return;
         }
         }
-         s=String.format("%d %s Pizzas with delicious Toppings of cheese,%s and yummy %s sauces %s(Rs.%d)", 
+         s=String.format("%d %s Pizzas with delicious Toppings of %s and yummy %s sauces %s(Rs.%d)", 
                 myPizza.quantity,
                 myPizza.getCrustSize(),
-                myPizza.getIng(),
+                myPizza.getIng().equals("")?"Cheese":"Cheese, "+myPizza.getIng(),
                 myPizza.getSauce(),
                 (myPizza.isCheeseBurst?"loaded with extra cheesy Cheese Busrt!!":""),
                 myPizza.getPrice());
@@ -735,6 +783,18 @@ public class AppInterface extends javax.swing.JFrame {
             listPizzas.clearSelection();
         }
     }//GEN-LAST:event_plus_buttonActionPerformed
+
+    private void mob_noActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mob_noActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_mob_noActionPerformed
+
+    private void clear_all_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clear_all_buttonActionPerformed
+        // TODO add your handling code here:
+        myPizza=new Pizza();
+        AllPizzas.clear();
+        model.clear();
+        updateWholeUI();
+    }//GEN-LAST:event_clear_all_buttonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -775,6 +835,7 @@ public class AppInterface extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Error_text;
     private javax.swing.JButton add_pizza_button;
     private javax.swing.JButton clear_all_button;
     private javax.swing.JCheckBox is_cheese_burst;
@@ -790,6 +851,8 @@ public class AppInterface extends javax.swing.JFrame {
     private javax.swing.JScrollPane listPizzaContainer;
     private javax.swing.JList<String> listPizzas;
     private javax.swing.JButton minus_button;
+    private javax.swing.JTextField mob_no;
+    private javax.swing.JLabel mob_no_text;
     private javax.swing.JButton place_order_button;
     private javax.swing.JButton plus_button;
     private javax.swing.JSpinner quantity;
@@ -860,6 +923,8 @@ quantity.setValue(myPizza.quantity);
 add_pizza_button.setText("ADD PIZZA");
     setPizzaCrust(myPizza.crust);
     updatePrice();
+    Error_text.setVisible(false);
+    
 }
 private void setPizzaCrust(int i){
 myPizza.crust=i;
